@@ -1,30 +1,17 @@
 import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Features from "../components/Features";
+import Footer from "../components/Footer";
+
 function Home() {
-
   return (
-
     <>
-
       <Navbar />
-
-      <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-
-        <div>
-
-          <h1 className="text-5xl font-bold">
-
-            Welcome to HRFlow AI
-
-          </h1>
-
-        </div>
-
-      </div>
-
+      <Hero />
+      <Features />
+      <Footer />
     </>
-
   );
-
 }
 
 export default Home;
