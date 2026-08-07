@@ -1,6 +1,7 @@
 import Button from "./Button";
-
+import { useNavigate } from "react-router-dom";
 function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-100 min-h-[90vh] flex items-center">
 
@@ -26,8 +27,22 @@ function Hero() {
           </p>
 
           <div className="mt-10 flex gap-5">
-            <Button text="Get Started" />
-            <Button text="Learn More" />
+   <Button
+  text="Get Started"
+  onClick={() => navigate("/register")}
+/>
+           <button
+  onClick={() =>
+    document
+      .getElementById("features")
+      ?.scrollIntoView({
+        behavior: "smooth",
+      })
+  }
+  className="..."
+>
+  Learn More
+</button>
           </div>
 
         </div>
