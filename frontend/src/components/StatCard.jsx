@@ -12,11 +12,11 @@ export default function StatCard({
 
   return (
 
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-between items-center">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-between items-center">
 
       <div>
 
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-500 dark:text-darktext-muted text-sm">
 
           {title}
 

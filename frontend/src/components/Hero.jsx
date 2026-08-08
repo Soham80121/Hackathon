@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function Hero() {
   const navigate = useNavigate();
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-100 min-h-[90vh] flex items-center">
+    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 min-h-[90vh] flex items-center">
 
       <div className="absolute w-96 h-96 bg-blue-300 rounded-full blur-3xl opacity-20 -top-20 -left-20"></div>
 
@@ -13,23 +13,23 @@ function Hero() {
 
         <div>
 
-          <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-medium">
+          <span className="inline-block px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium">
             AI Powered HR Platform
           </span>
 
-          <h1 className="mt-6 text-6xl font-extrabold leading-tight">
+          <h1 className="mt-6 text-6xl font-extrabold leading-tight text-slate-900 dark:text-white">
             Smarter Employee
-            <span className="text-blue-600"> Management</span>
+            <span className="text-blue-600 dark:text-blue-500"> Management</span>
           </h1>
 
-          <p className="mt-6 text-lg text-gray-600">
-            Recruit, manage, analyze and grow your workforce using AI-powered automation.
+          <p className="mt-6 text-lg text-gray-600 dark:text-darktext-muted">
+            Manage employee leave requests, organize your workforce, and get instant HR policy answers using AI-powered automation.
           </p>
 
           <div className="mt-10 flex gap-5">
    <Button
   text="Get Started"
-  onClick={() => navigate("/register")}
+  onClick={() => navigate("/login")}
 />
            <button
   onClick={() =>
@@ -39,7 +39,7 @@ function Hero() {
         behavior: "smooth",
       })
   }
-  className="..."
+  className="font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
 >
   Learn More
 </button>

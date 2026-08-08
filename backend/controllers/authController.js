@@ -1,41 +1,8 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const Notification = require("../models/Notification");
 
-// Register
-exports.register = async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-
-    const existingUser = await User.findOne({ email });
-
-    if (existingUser) {
-      return res.status(400).json({
-        message: "User already exists",
-      });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await User.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
-
- const { password: _, ...safeUser } = user.toObject();
-
-res.status(201).json({
-  message: "Registration successful",
-  user: safeUser,
-});
-
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
 
 // Login
 exports.login = async (req, res) => {
@@ -50,8 +17,14 @@ exports.login = async (req, res) => {
     console.log("User from DB:", user);
 
     if (!user) {
-      return res.status(400).json({
-        message: "Invalid credentials",
+      return res.status(404).json({
+        message: "Account not found. Please contact your HR Administrator.",
+      });
+    }
+
+    if (user.status === "Inactive") {
+      return res.status(403).json({
+        message: "Account disabled. Please contact your HR Administrator.",
       });
     }
 
@@ -71,6 +44,7 @@ exports.login = async (req, res) => {
       {
         id: user._id,
         role: user.role,
+        name: user.name,
       },
       process.env.JWT_SECRET,
       {
@@ -79,6 +53,14 @@ exports.login = async (req, res) => {
     );
 
 const { password: _, ...safeUser } = user.toObject();
+
+// Create a login notification
+await Notification.create({
+  userId: user._id,
+  title: "New Login",
+  message: "Your account was recently logged into.",
+  type: "info"
+});
 
 res.json({
   message: "Login successful",
@@ -91,5 +73,17 @@ res.json({
       message: error.message,
     });
   }
+};
 
+// Get Profile
+exports.getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };

@@ -1,11 +1,13 @@
 import { useState } from "react";
+import api from "../services/api";
+import toast from "react-hot-toast";
 import {
   CloudArrowUpIcon,
   DocumentTextIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
-export default function UploadPolicy() {
+export default function UploadPolicy({ onUploadSuccess }) {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -25,24 +27,38 @@ export default function UploadPolicy() {
     setSelectedFile(null);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (!selectedFile) {
-      alert("Please choose a PDF first.");
+      toast.error("Please choose a PDF first.");
       return;
     }
 
-    // Backend integration on Day 7
-    alert(`${selectedFile.name} is ready for upload.`);
+    const formData = new FormData();
+    formData.append("policyFile", selectedFile);
+    
+    // We expect the title to be passed or derived. Using file name for now.
+    formData.append("title", selectedFile.name.replace(".pdf", ""));
+
+    try {
+      await api.post("/api/policies/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      toast.success(`${selectedFile.name} uploaded successfully.`);
+      setSelectedFile(null);
+      if (onUploadSuccess) onUploadSuccess();
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to upload policy");
+    }
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-lg p-8 mt-8">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg p-8 mt-8">
 
-      <h2 className="text-2xl font-bold text-slate-800">
+      <h2 className="text-2xl font-bold text-slate-800 dark:text-darktext-primary">
         Upload HR Policy
       </h2>
 
-      <p className="text-gray-500 mt-2">
+      <p className="text-gray-500 dark:text-darktext-muted mt-2">
         Upload company policy documents in PDF format.
       </p>
 
@@ -50,11 +66,11 @@ export default function UploadPolicy() {
 
         <CloudArrowUpIcon className="w-20 h-20 mx-auto text-blue-500" />
 
-        <h3 className="mt-5 text-3xl font-bold text-slate-800">
+        <h3 className="mt-5 text-3xl font-bold text-slate-800 dark:text-darktext-primary">
           Drag & Drop PDF here
         </h3>
 
-        <p className="text-gray-500 mt-3 text-lg">
+        <p className="text-gray-500 dark:text-darktext-muted mt-3 text-lg">
           or choose a PDF from your computer
         </p>
 
@@ -90,7 +106,7 @@ export default function UploadPolicy() {
 
         {selectedFile && (
 
-          <div className="mt-10 bg-slate-50 border border-slate-200 rounded-2xl p-5 flex justify-between items-center">
+          <div className="mt-10 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex justify-between items-center">
 
             <div className="flex items-center gap-4">
 
@@ -102,11 +118,11 @@ export default function UploadPolicy() {
 
               <div className="text-left">
 
-                <h4 className="font-semibold text-slate-800">
+                <h4 className="font-semibold text-slate-800 dark:text-darktext-primary">
                   {selectedFile.name}
                 </h4>
 
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 dark:text-darktext-muted text-sm">
                   {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                 </p>
 

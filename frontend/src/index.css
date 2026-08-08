@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-darktext-primary: #F5F5F5;
+  --color-darktext-secondary: #B8B8B8;
+  --color-darktext-muted: #8A8A8A;
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   scroll-behavior: smooth;
@@ -11,6 +19,23 @@ body {
   font-family: Inter, sans-serif;
   color: #0f172a;
 }
+
+.dark body {
+  background: #0f172a;
+  color: var(--color-darktext-primary);
+}
+
+/* Force standard text elements to use primary text color if not explicitly styled */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: var(--color-darktext-primary);
+}
+
+.dark input::placeholder, 
+.dark textarea::placeholder {
+  color: var(--color-darktext-muted) !important;
+}
+
+
 
 * {
   box-sizing: border-box;

@@ -15,12 +15,12 @@ function Footer() {
           <div>
 
             <h2 className="text-3xl font-bold">
-              HRFlow AI
+              Kyuka AI
             </h2>
 
             <p className="text-gray-400 mt-4 leading-7 max-w-md">
-              AI-powered HR platform that simplifies employee management,
-              leave approvals and analytics through intelligent automation.
+              An AI-powered HR platform that simplifies employee management,
+              leave approvals, and analytics through intelligent automation.
             </p>
 
           </div>
@@ -48,7 +48,7 @@ function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center text-gray-400">
 
           <p>
-            © 2026 HRFlow AI. All Rights Reserved.
+            © 2026 Kyuka AI. All Rights Reserved.
           </p>
 
           <p className="mt-3 md:mt-0">

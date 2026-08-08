@@ -15,21 +15,21 @@ export default function Home() {
       {/* About Section */}
       <section
         id="about"
-        className="py-24 bg-white"
+        className="py-24 bg-white dark:bg-slate-900"
       >
         <div className="max-w-7xl mx-auto px-8">
 
           <div className="text-center">
 
-            <h2 className="text-4xl font-bold text-slate-800">
-              About HRFlow AI
+            <h2 className="text-4xl font-bold text-slate-800 dark:text-darktext-primary">
+              About Kyuka AI
             </h2>
 
-            <p className="mt-6 text-lg text-gray-600 max-w-4xl mx-auto leading-8">
-              HRFlow AI is an intelligent Human Resource Management platform
-              that simplifies employee management, HR policy handling, and
-              AI-powered decision making. Our goal is to automate repetitive
-              HR tasks, improve compliance, and provide instant policy answers
+            <p className="mt-6 text-lg text-gray-600 dark:text-darktext-muted max-w-4xl mx-auto leading-8">
+              Kyuka AI is an intelligent Human Resource Management platform
+              that simplifies employee administration, HR policy handling, and
+              AI-powered decision-making. Our mission is to automate repetitive
+              HR tasks, ensure compliance, and provide instant policy resolutions
               using Artificial Intelligence.
             </p>
 
@@ -37,38 +37,38 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 mt-16">
 
-            <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
+            <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-8 shadow-sm">
 
-              <h3 className="text-2xl font-semibold text-slate-800">
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-darktext-primary">
                 🎯 Mission
               </h3>
 
-              <p className="mt-4 text-gray-600">
-                Automate HR operations and improve employee experience with AI.
+              <p className="mt-4 text-gray-600 dark:text-darktext-muted">
+                Automate HR operations and elevate the employee experience using AI.
               </p>
 
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
+            <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-8 shadow-sm">
 
-              <h3 className="text-2xl font-semibold text-slate-800">
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-darktext-primary">
                 🚀 Vision
               </h3>
 
-              <p className="mt-4 text-gray-600">
+              <p className="mt-4 text-gray-600 dark:text-darktext-muted">
                 Build a smarter workplace where HR decisions are fast,
-                transparent and AI-assisted.
+                transparent, and AI-assisted.
               </p>
 
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
+            <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-8 shadow-sm">
 
-              <h3 className="text-2xl font-semibold text-slate-800">
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-darktext-primary">
                 💡 Technologies
               </h3>
 
-              <p className="mt-4 text-gray-600">
+              <p className="mt-4 text-gray-600 dark:text-darktext-muted">
                 React • Node.js • Express • MongoDB • OpenAI API
               </p>
 
@@ -82,17 +82,17 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-24 bg-slate-100"
+        className="py-24 bg-slate-100 dark:bg-slate-800"
       >
         <div className="max-w-6xl mx-auto px-8">
 
           <div className="text-center">
 
-            <h2 className="text-4xl font-bold text-slate-800">
+            <h2 className="text-4xl font-bold text-slate-800 dark:text-darktext-primary">
               Contact Us
             </h2>
 
-            <p className="mt-5 text-lg text-gray-600">
+            <p className="mt-5 text-lg text-gray-600 dark:text-darktext-muted">
               Have questions or need support? We'd love to hear from you.
             </p>
 
@@ -107,7 +107,7 @@ export default function Home() {
               </h3>
 
               <p className="mb-4">
-                📧 hrflowai@gmail.com
+                📧 kyukaai@gmail.com
               </p>
 
               <p className="mb-4">
@@ -120,7 +120,7 @@ export default function Home() {
 
             </div>
 
-            <form className="bg-white rounded-2xl shadow-md p-8 space-y-5">
+            <form className="bg-white dark:bg-slate-900 rounded-2xl shadow-md p-8 space-y-5">
 
               <input
                 type="text"
