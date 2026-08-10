@@ -47,7 +47,7 @@ app.use("/api/search", searchRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
-  res.send("HRFlow AI Backend Running...");
+  res.send("Kyuka AI Backend Running...");
 });
 app.get("/dashboard", auth, (req, res) => {
 
