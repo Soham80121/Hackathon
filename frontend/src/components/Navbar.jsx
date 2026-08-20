@@ -24,16 +24,16 @@ function Navbar() {
   };
   return (
     <nav className="sticky top-0 z-50 bg-white dark:bg-slate-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-slate-800 shadow-sm">
-      <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-5 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-2 md:gap-3">
 
-          <div className="w-12 h-12 bg-slate-950 rounded-xl flex items-center justify-center p-1 shadow-md shrink-0 border border-gray-200 dark:border-slate-700/50">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-slate-950 rounded-xl flex items-center justify-center p-1 shadow-md shrink-0 border border-gray-200 dark:border-slate-700/50">
             <img src="/logo.png" alt="Kyuka AI Logo" className="w-full h-full object-contain drop-shadow-sm" />
           </div>
 
-          <h1 className="text-2xl font-bold text-slate-800 dark:text-darktext-primary">
+          <h1 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-darktext-primary">
             Kyuka AI
           </h1>
 
@@ -86,9 +86,9 @@ function Navbar() {
         {/* Login Button */}
  {
   token ? (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-2 md:gap-4">
 
-      <span className="font-semibold text-slate-700 dark:text-darktext-secondary">
+      <span className="hidden sm:inline font-semibold text-slate-700 dark:text-darktext-secondary">
         Hi, {user?.name}
       </span>
 
@@ -98,7 +98,7 @@ function Navbar() {
 
       <button
         onClick={() => setIsLogoutModalOpen(true)}
-        className="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-xl transition"
+        className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 md:px-5 md:py-3 text-sm md:text-base rounded-xl transition"
       >
         Logout
       </button>

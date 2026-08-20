@@ -124,7 +124,7 @@ export default function AIAssistant() {
             </div>
 
             {/* Suggested Questions & Input */}
-            <div className="p-6 sm:p-8 bg-gray-50 dark:bg-slate-900/50 shrink-0 border-t border-gray-100 dark:border-slate-800">
+            <div className="p-4 sm:p-6 md:p-8 bg-gray-50 dark:bg-slate-900/50 shrink-0 border-t border-gray-100 dark:border-slate-800">
               
               {messages.length === 1 && !isLoading && (
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -132,7 +132,7 @@ export default function AIAssistant() {
                     <button
                       key={idx}
                       onClick={() => handleSendMessage(q)}
-                      className="text-sm bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-slate-600 dark:text-darktext-muted hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50 px-4 py-2 rounded-full transition-colors text-left"
+                      className="text-xs sm:text-sm bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 text-slate-600 dark:text-darktext-muted hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50 px-3 sm:px-4 py-2 rounded-full transition-colors text-left break-words max-w-full"
                     >
                       {q}
                     </button>
@@ -140,20 +140,20 @@ export default function AIAssistant() {
                 </div>
               )}
 
-              <form onSubmit={onSubmit} className="flex gap-3 relative">
+              <form onSubmit={onSubmit} className="flex gap-2 sm:gap-3 relative">
                 <input
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Ask something about policies..."
+                  placeholder="Ask about policies..."
                   disabled={isLoading}
-                  className="flex-1 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl px-6 py-4 focus:outline-none dark:text-darktext-primary focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow disabled:bg-gray-100 dark:bg-slate-800 disabled:cursor-not-allowed text-[15px]"
+                  className="flex-1 min-w-0 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl px-4 sm:px-6 py-3 sm:py-4 focus:outline-none dark:text-darktext-primary focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow disabled:bg-gray-100 dark:bg-slate-800 disabled:cursor-not-allowed text-[14px] sm:text-[15px]"
                 />
                 <button 
                   type="submit"
                   disabled={!inputValue.trim() || isLoading}
-                  className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white p-4 rounded-2xl transition-colors shadow-sm flex items-center justify-center shrink-0 w-[56px] h-[56px]"
+                  className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white p-3 sm:p-4 rounded-2xl transition-colors shadow-sm flex items-center justify-center shrink-0 w-[48px] h-[48px] sm:w-[56px] sm:h-[56px]"
                 >
-                  <PaperAirplaneIcon className="w-6 h-6" />
+                  <PaperAirplaneIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </form>
             </div>

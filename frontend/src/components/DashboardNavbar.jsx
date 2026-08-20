@@ -113,11 +113,11 @@ export default function DashboardNavbar() {
 
     <header className="bg-white dark:bg-slate-900 shadow-sm border-b border-gray-200 dark:border-slate-800">
 
-      <div className="flex justify-between items-center px-8 py-5">
+      <div className="flex justify-between items-center px-4 md:px-8 py-3 md:py-5">
 
         {/* Left Side */}
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4 shrink-0 overflow-hidden">
 
           <button 
             onClick={() => setIsOpen(true)}
@@ -126,15 +126,15 @@ export default function DashboardNavbar() {
             <Bars3Icon className="w-6 h-6 text-slate-800 dark:text-darktext-primary" />
           </button>
 
-          <div>
+          <div className="min-w-0">
 
-            <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-darktext-primary">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-800 dark:text-darktext-primary truncate">
 
             Dashboard
 
           </h1>
 
-          <p className="text-gray-500 dark:text-darktext-muted mt-1">
+          <p className="text-xs md:text-sm text-gray-500 dark:text-darktext-muted mt-0.5 md:mt-1 truncate">
 
             Welcome back, {displayName} 👋
 
@@ -145,7 +145,7 @@ export default function DashboardNavbar() {
 
         {/* Right Side */}
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-2 md:gap-5 shrink-0 ml-2">
 
           {/* Search */}
           <div className="relative hidden sm:block" ref={searchRef}>

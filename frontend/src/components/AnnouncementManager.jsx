@@ -59,12 +59,12 @@ export default function AnnouncementManager() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-gray-100 dark:border-slate-800 p-8 mb-8">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-2xl font-bold text-gray-800 dark:text-darktext-primary">Announcement Management</h3>
+    <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-gray-100 dark:border-slate-800 p-4 md:p-8 mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6">
+        <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-darktext-primary">Announcement Management</h3>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl transition font-medium"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-5 py-2 rounded-xl transition font-medium text-sm md:text-base w-full sm:w-auto"
         >
           + Create Announcement
         </button>

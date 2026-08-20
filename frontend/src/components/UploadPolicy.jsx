@@ -76,9 +76,9 @@ export default function UploadPolicy({ onUploadSuccess }) {
 
         {/* Buttons */}
 
-        <div className="mt-10 flex justify-center items-center gap-8">
+        <div className="mt-8 md:mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 w-full">
 
-          <label>
+          <label className="w-full sm:w-auto">
 
             <input
               type="file"
@@ -87,7 +87,7 @@ export default function UploadPolicy({ onUploadSuccess }) {
               onChange={handleFileChange}
             />
 
-            <span className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl cursor-pointer transition font-semibold shadow-md">
+            <span className="block w-full sm:w-auto text-center bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-3 rounded-xl cursor-pointer transition font-semibold shadow-md">
               Choose PDF
             </span>
 
@@ -95,7 +95,7 @@ export default function UploadPolicy({ onUploadSuccess }) {
 
           <button
             onClick={handleUpload}
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold transition shadow-md"
+            className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-3 rounded-xl font-semibold transition shadow-md"
           >
             Upload Policy
           </button>
