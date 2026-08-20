@@ -39,7 +39,14 @@ exports.askCopilot = async (req, res) => {
 
     res.json({ message: aiMessage });
   } catch (error) {
-    console.error("Copilot Error:", error);
-    res.status(500).json({ message: "Failed to communicate with HR Copilot" });
+    console.error("Copilot Error:", error.message || error);
+    if (error.error?.code === "model_not_found" || error.message?.includes("does not exist")) {
+      return res.status(404).json({ message: "AI Model not found or unavailable." });
+    } else if (error.status === 401 || error.message?.includes("API key")) {
+      return res.status(401).json({ message: "Invalid or missing API key." });
+    } else if (error.status === 429) {
+      return res.status(429).json({ message: "Rate limit exceeded. Please try again later." });
+    }
+    res.status(500).json({ message: "Failed to communicate with HR Copilot: " + (error.message || "Unknown error") });
   }
 };

@@ -32,7 +32,7 @@ ${policyContext || "No policies uploaded yet."}
         { role: "system", content: systemPrompt },
         { role: "user", content: message },
       ],
-      model: "llama-3.3-70b-versatile",
+      model: "qwen/qwen3.6-27b",
       temperature: 0.2,
       max_tokens: 1024,
     });
@@ -61,8 +61,15 @@ ${policyContext || "No policies uploaded yet."}
 
     res.json({ message: aiMessage });
   } catch (error) {
-    console.error("Groq API Error:", error);
-    res.status(500).json({ message: "Failed to communicate with AI Assistant" });
+    console.error("Groq API Error:", error.message || error);
+    if (error.error?.code === "model_not_found" || error.message?.includes("does not exist")) {
+      return res.status(404).json({ message: "AI Model not found or unavailable." });
+    } else if (error.status === 401 || error.message?.includes("API key")) {
+      return res.status(401).json({ message: "Invalid or missing API key." });
+    } else if (error.status === 429) {
+      return res.status(429).json({ message: "Rate limit exceeded. Please try again later." });
+    }
+    res.status(500).json({ message: "Failed to communicate with AI Assistant: " + (error.message || "Unknown error") });
   }
 };
 

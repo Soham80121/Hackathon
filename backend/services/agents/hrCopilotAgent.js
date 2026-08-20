@@ -27,13 +27,12 @@ ${JSON.stringify(leaves)}
         { role: "system", content: systemPrompt },
         { role: "user", content: query },
       ],
-      model: "llama-3.3-70b-versatile",
+      model: "qwen/qwen3.6-27b",
       temperature: 0.1,
     });
 
     return chatCompletion.choices[0]?.message?.content || "Could not process request.";
   } catch (error) {
-    console.error("Copilot Agent Error:", error);
-    return "Error communicating with HR Copilot Agent.";
+    throw error;
   }
 };
