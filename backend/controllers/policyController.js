@@ -51,7 +51,7 @@ exports.uploadPolicy = async (req, res) => {
     const newPolicy = await Policy.create({
       title,
       filename: req.file.originalname,
-      filePath: req.file.path,
+      filePath: req.file.path.replace(/\\/g, "/"),
       textContent: pdfText,
     });
 
@@ -79,8 +79,9 @@ exports.deletePolicy = async (req, res) => {
     }
 
     // Delete file if it exists
-    if (fs.existsSync(policy.filePath)) {
-      fs.unlinkSync(policy.filePath);
+    const absolutePath = path.join(__dirname, "../", policy.filePath);
+    if (fs.existsSync(absolutePath)) {
+      fs.unlinkSync(absolutePath);
     }
 
     await Policy.findByIdAndDelete(req.params.id);
